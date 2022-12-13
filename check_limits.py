@@ -9,6 +9,7 @@ class BatteryChecker():
             self.print_abnormal_state('Temperature')
             self.temperature_state = False
         return self
+    
     def check_battery_soc_abnormality(self,soc):
         if soc < 20 or soc > 80:
             self.print_abnormal_state('State of Charge')
@@ -23,8 +24,7 @@ class BatteryChecker():
 
     def print_abnormal_state(self,print_item):
         print(f"{print_item} is out of range!")
-
-
+        
 def battery_is_ok(temperature, soc, charge_rate):
     batteryChecker = BatteryChecker()
     batteryChecker.check_battery_temperature_abnormality(temperature).check_battery_soc_abnormality(soc).check_charge_rate_abnormality(charge_rate)
