@@ -1,53 +1,43 @@
-def check_battery_temperature_abnormality(temperature):
-  print("inside temperature")
-  if (temperature < 0 or temperature > 45):
-      print_abnormal_state('Temperature')
-      return False
-  else:
-      return True
-def check_battery_soc_abnormality(soc,previous_output):
-  print("inside soc")
-  if previous_output:
-    if soc < 20 or soc > 80:
-      print_abnormal_state('State of Charge')
-      return False
-    else:
-      return True
-  return False
+class BatteryChecker():
+    def __init__(self) -> None:
+        self.temperature_state = None
+        self.soc_state = None
+        self.charge_rate_state = None
 
-def check_charge_rate_abnormality(charge_rate,previous_output):
-  print("inside charge rate")
-  if previous_output:
-    if charge_rate > 0.8:
-      print_abnormal_state('Charge rate')
-      return False
-    else:
-      return True
-  return False
+    def check_battery_temperature_abnormality(self,temperature):
+        if (temperature < 0 or temperature > 45):
+            self.print_abnormal_state('Temperature')
+            self.temperature_state = False
+        else:
+            self.temperature_state = True
+        return self
+    def check_battery_soc_abnormality(self,soc):
+        if soc < 20 or soc > 80:
+            self.print_abnormal_state('State of Charge')
+            self.soc_state = False
+        else:
+            self.soc_state = True
+        return self
 
-def print_abnormal_state(print_item):
-  print(f"{print_item} is out of range!")
+    def check_charge_rate_abnormality(self,charge_rate):
+        if charge_rate > 0.8:
+            self.print_abnormal_state('Charge rate')
+            self.charge_rate_state = False
+        else:
+            self.charge_rate_state = True
+        return self
+
+    def print_abnormal_state(self,print_item):
+        print(f"{print_item} is out of range!")
 
 
 def battery_is_ok(temperature, soc, charge_rate):
-    return check_charge_rate_abnormality(charge_rate,check_battery_soc_abnormality(soc,check_battery_temperature_abnormality(temperature)))
-
-# def battery_is_ok1(temperature, soc, charge_rate):
-#   if temperature < 0 or temperature > 45:
-#     print('Temperature is out of range!')
-#     return False
-#   elif soc < 20 or soc > 80:
-#     print('State of Charge is out of range!')
-#     return False
-#   elif charge_rate > 0.8:
-#     print('Charge rate is out of range!')
-#     return False
-
-#   return True
-
-
-
+    batteryChecker = BatteryChecker()
+    batteryChecker.check_battery_temperature_abnormality(temperature).check_battery_soc_abnormality(soc).check_charge_rate_abnormality(charge_rate)
+    return (batteryChecker.temperature_state and batteryChecker.soc_state and batteryChecker.charge_rate_state)
+    
 
 if __name__ == '__main__':
-  assert(battery_is_ok(25, 70, 0.7) is True)
-  assert(battery_is_ok(50, 85, 0) is False)
+    assert(battery_is_ok(25, 70, 0.7) is True)
+    assert(battery_is_ok(50, 85, 0) is False)
+    assert(battery_is_ok(100, -1, 0.999) is False)
