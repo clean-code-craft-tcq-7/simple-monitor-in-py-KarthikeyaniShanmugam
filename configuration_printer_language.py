@@ -1,0 +1,1 @@
+language = 'en' # put 'en' for english and 'gr' for german. Only two languages supported so far.
