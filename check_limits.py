@@ -12,3 +12,4 @@ def battery_is_ok(temperature, soc, charge_rate):
     
     return (temperatureChecker.temperature_state and socChecker.soc_state and chargerateChecker.charge_rate_state)
 
+
