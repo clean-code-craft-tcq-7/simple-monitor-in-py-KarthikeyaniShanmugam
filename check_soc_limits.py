@@ -12,12 +12,11 @@ class SocChecker():
         self.maximum_warning = self.soc_maximum_threshold - calculate_warning(self.soc_maximum_threshold)
 
     def check_battery_soc_abnormality(self,soc):
-        if soc_warning:
-            if soc > self.soc_minimum_threshold and soc <= self.minimum_warning:
-                print_minimum_warning('State of Charge')
+        if soc_warning and soc > self.soc_minimum_threshold and soc <= self.minimum_warning:
+            print_minimum_warning('State of Charge')
 
-            if soc > self.maximum_warning and soc <= self.soc_maximum_threshold:
-                print_maximum_warning('State of Charge')
+        if soc_warning and soc > self.maximum_warning and soc <= self.soc_maximum_threshold:
+            print_maximum_warning('State of Charge')
 
         if soc < self.soc_minimum_threshold or soc > self.soc_maximum_threshold:
             print_abnormal_state('State of Charge')
