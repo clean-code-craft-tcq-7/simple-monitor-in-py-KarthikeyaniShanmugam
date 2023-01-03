@@ -22,15 +22,19 @@ class SocChecker():
             self.maximum_warning = True
             
 
-    def print_warning(self):
+    def print_minimum_warning(self):
         if soc_warning and self.minimum_warning:
             print_minimum_warning('State of Charge')
+
+    def print_maximum_warning(self):            
         if soc_warning and self.maximum_warning:
             print_maximum_warning('State of Charge')    
+            
     def check_battery_soc_abnormality(self,soc):
         self.check_minimum_warning(soc)
         self.check_maximum_warning(soc)
-        self.print_warning()
+        self.print_minimum_warning()
+        self.print_maximum_warning()
         if soc < self.soc_minimum_threshold or soc > self.soc_maximum_threshold:
             print_abnormal_state('State of Charge')
             self.soc_state = False
