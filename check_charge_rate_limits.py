@@ -7,8 +7,7 @@ class ChargeRateChecker():
         self.charge_rate_maximum_threshold = 0.8
         self.maximum_warning = self.charge_rate_maximum_threshold - calculate_warning(self.charge_rate_maximum_threshold)
     def check_charge_rate_abnormality(self,charge_rate):
-        if charge_rate_warning:
-            if charge_rate > self.maximum_warning and charge_rate <= self.charge_rate_maximum_threshold:
+        if charge_rate_warning and charge_rate > self.maximum_warning and charge_rate <= self.charge_rate_maximum_threshold:
                 print_maximum_warning('Charge rate')
         
         if charge_rate > self.charge_rate_maximum_threshold:
