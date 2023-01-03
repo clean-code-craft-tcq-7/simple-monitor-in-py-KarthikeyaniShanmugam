@@ -10,3 +10,4 @@ if __name__ == '__main__':
     socChecker.check_battery_soc_abnormality(81)
     socChecker.check_battery_soc_abnormality(1000)
     socChecker.check_battery_soc_abnormality(-23.678)
+    socChecker.check_battery_soc_abnormality(23)
