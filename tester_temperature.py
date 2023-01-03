@@ -9,3 +9,4 @@ if __name__ == '__main__':
     temperatureChecker.check_battery_temperature_abnormality(46)
     temperatureChecker.check_battery_temperature_abnormality(1000)
     temperatureChecker.check_battery_temperature_abnormality(-23.678)
+    temperatureChecker.check_battery_temperature_abnormality(1)
