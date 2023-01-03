@@ -1,4 +1,4 @@
-Note: The Extensions that I seleceted:
+# Please Note: The Extensions that I seleceted: -->
       Extension 1: Early Warning
       Extension 2: Support a language in addition to English
 
