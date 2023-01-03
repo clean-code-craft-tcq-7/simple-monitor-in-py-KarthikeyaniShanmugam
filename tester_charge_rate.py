@@ -9,3 +9,4 @@ if __name__ == '__main__':
     chargerateChecker.check_charge_rate_abnormality(1.456)
     chargerateChecker.check_charge_rate_abnormality(-100)
     chargerateChecker.check_charge_rate_abnormality(100)
+    
